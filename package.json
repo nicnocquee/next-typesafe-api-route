@@ -1,6 +1,6 @@
 {
   "name": "next-typesafe-api-route",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Type-safe API handlers with OpenAPI documentation for Next.js Route Handlers (App Router)",
   "keywords": [
     "api",
