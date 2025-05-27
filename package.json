@@ -1,0 +1,65 @@
+{
+  "name": "next-typesafe-api-route",
+  "version": "0.0.12",
+  "description": "Type-safe API handlers with OpenAPI documentation for Next.js Route Handlers (App Router)",
+  "keywords": [
+    "api",
+    "typescript",
+    "next.js"
+  ],
+  "bin": {
+    "generate-api-registry": "dist/cli/generate-api-registry.js"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "homepage": "https://github.com/nicnocquee/next-typesafe-api-route",
+  "bugs": {
+    "url": "https://github.com/nicnocquee/next-typesafe-api-route/issues"
+  },
+  "author": "Nico Prananta <hi@nico.fyi> (https://nico.fyi)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicnocquee/next-typesafe-api-route.git"
+  },
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.1",
+    "@changesets/cli": "^2.29.4",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.1.5",
+    "@vitejs/plugin-react": "^4.4.1",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.5.3",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  },
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^7.3.2"
+  },
+  "peerDependencies": {
+    "next": "^14.0.0 || ^15.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "zod": ">=3.0.0"
+  },
+  "scripts": {
+    "build": "tsup && npm run copy-bin",
+    "copy-bin": "mkdir -p dist/cli && cp src/cli/generate-api-registry.js dist/cli/",
+    "ci": "npm run build && npm run check-format && npm run check-exports && npm run lint && npm run test",
+    "lint": "tsc",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack .",
+    "local-release": "npm run ci && changeset version && changeset publish"
+  }
+}
